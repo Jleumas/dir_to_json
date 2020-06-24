@@ -3,8 +3,6 @@ import json
 import os
 import sys
 
-DEBUG = False
-
 parser = argparse.ArgumentParser(description='''Generate a JSON of all files within a directory. 
                                     Optionally limit those to one or more keywords.''')
 
