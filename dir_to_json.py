@@ -28,7 +28,8 @@ args = parser.parse_args()
 
 
 def dir_to_json(rootpath='', keywords='', exclude='', output='output.json', verbose=False) -> None:
-    rootpath = rootpath[0] if len(rootpath) > 0 else rootpath
+    rootpath = rootpath[0] if type(rootpath) == list else rootpath
+    output = output[0] if type(output) == list else output
     filelist = []
 
     for (root, dir, files) in os.walk(rootpath, topdown=False):
@@ -52,7 +53,7 @@ def main():
     dir_to_json(rootpath=args.root,
                 keywords=args.keywords,
                 exclude=args.exclude,
-                output=args.output[0],
+                output=args.output,
                 verbose=args.verbose)
 
 
