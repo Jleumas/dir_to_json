@@ -39,12 +39,12 @@ def dir_to_json(rootpath='', keywords='', exclude='', output='output.json', verb
                     x in filename for x in keywords) and any(y not in filename for y in exclude) else None
 
             filelist.append(os.path.join(root.split('/')[-1], filename).replace('\\', '/')) if any(
-                x in filename for x in keywords) and any(x not in filename for x in exclude) else None
+                x in filename for x in keywords) and any(y not in filename for y in exclude) else None
 
     json_file = {}
     json_file['files'] = filelist
 
-    print('Saving file to {}'.format(output))
+    print('Saving file to {}'.format(os.path.join(rootpath, output)).replace('\\', '/'))
     with open(os.path.join(rootpath, output), 'w') as f:
         json.dump(json_file, f, indent=4)
 
